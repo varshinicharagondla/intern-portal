@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaderboard</title>
+    <script>
+        fetch('/api/leaderboard')
+        .then(response => response.json())
+        .then(data => {
+            const list = document.getElementById("leaders");
+            data.forEach((entry, index) => {
+                const li = document.createElement("li");
+                li.textContent = `${index + 1}. ${entry.name} - ₹${entry.amount}`;
+                list.appendChild(li);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>Leaderboard</h2>
+    <ol id="leaders"></ol>
+    <a href="dashboard.html">Back to Dashboard</a>
+</body>
+</html>
